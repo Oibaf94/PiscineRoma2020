@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1606823590 source:c:\users\ffecd\documents\c projects\c02\ex07\ft_strupcase\main.c
+	<stdio.h>
+	<string.h>
+

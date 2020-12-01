@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1606809553 source:c:\users\ffecd\documents\c projects\c02\ex01\ft_strncpy\main.c
+	<stdio.h>
+	<stdlib.h>
+

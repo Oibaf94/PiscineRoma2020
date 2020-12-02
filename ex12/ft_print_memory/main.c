@@ -59,24 +59,61 @@ void ft_print_hex_values(char *p, int n)
             write(1, " ",1);
         i++;
     }
+    while (i < 16)
+    {
+        write(1, " ", 1);
+        i++;
+    }
 }
 
 void ft_print_printable(char *p, int n)
 {
     int i;
     char *pointer;
+    char toprint;
 
     pointer = (char *)p;
     i = 0;
     while (i < n)
     {
-
+        toprint = *pointer;
+        if (*pointer > 31 && *pointer < 127)
+            write(1, &toprint, 1);
+        else
+            write(1, ".", 1);
+        i++;
+        pointer++;
     }
+    write(1, "\n", 1);
 }
 
 void *ft_print_memory(void *addr, unsigned int size)
 {
-    return;
+    char *p;
+    int offset;
+    int toprint;
+
+    p = (char *)addr;
+    offset = 0;
+    toprint = 0;
+    while (size > 0)
+    {
+        if (size > 16)
+        {
+            toprint = 16;
+            size -= 16;
+        }
+        else
+        {
+            toprint = size;
+            size = 0;
+        }
+        ft_print_address(p + offset);
+        ft_print_hex_values(p + offset, toprint);
+        ft_print_printable(p + offset, toprint);
+        offset += 16;
+    }
+    return (addr);
 }
 
 int ft_strlen(char *s)
@@ -89,12 +126,8 @@ int ft_strlen(char *s)
 
 int main()
 {
-    char str[] = "According to all known\1laws of aviation, there is\2no way a bee should\6be able to fly.\tIts wings are\ftoo small to get its fat\nlittle body off the ground.\\The bee, of course, flies anyway,\vbecause bees don't care\rwhat humans think is\aimpossible";
-    //ft_print_memory(str, strlen(str));
-    char *p = &str[0];
-    printf("X:%d\n",p);
-    ft_print_address(p);
-    ft_print_hex_values(p, 16);
-    write(1,"*",1);
+    char str[] = "According to all1known\1laws of aviation, there2is\2no way a bee should\6be3able to fly.\tIts wings4are\ftoo small to get its fat\nlittle body\roff the9ground.\bThe bee,\aof course,0flies\vanyway,\vbecause bees don't care\rwhat humans think is\aimpossible";
+    ft_print_memory(str, strlen(str));
+
     return 0;
 }

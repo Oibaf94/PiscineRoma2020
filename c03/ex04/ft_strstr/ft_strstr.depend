@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1606944650 source:c:\users\ffecd\documents\c projects\c03\ex04\ft_strstr\ft_strstr.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

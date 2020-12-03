@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1606940110 source:c:\users\ffecd\documents\c projects\c03\ex02\ft_strcat\ft_strcat.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
